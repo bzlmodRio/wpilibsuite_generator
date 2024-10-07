@@ -1,0 +1,47 @@
+load("@rules_python//python:defs.bzl", "py_binary", "py_library")
+
+py_library(
+    name = "get_ni_dependencies",
+    srcs = ["get_ni_dependencies.py"],
+    visibility = ["//visibility:public"],
+    deps = ["@bzlmodrio-gentool//bazelrio_gentool"],
+)
+
+py_binary(
+    name = "generate",
+    srcs = ["generate.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":get_ni_dependencies",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)
+
+py_binary(
+    name = "publish",
+    srcs = ["publish.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":get_ni_dependencies",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)
+
+py_binary(
+    name = "auto_update",
+    srcs = ["auto_update.py"],
+    deps = [
+        ":generate",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)
+
+py_binary(
+    name = "get_version",
+    srcs = ["get_version.py"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":get_ni_dependencies",
+        "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
+)
