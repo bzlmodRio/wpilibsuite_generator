@@ -43,7 +43,7 @@ def get_toolchain_dependencies():
 
     platforms = []
 
-    jdk_version = "17.0.8.1+1"
+    jdk_version = "17.0.12+7"
     underscore_version = jdk_version.replace("+", "_")
     escaped_version = jdk_version.replace("+", "%2B")
 
