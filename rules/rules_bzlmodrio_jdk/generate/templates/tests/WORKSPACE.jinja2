@@ -1,0 +1,72 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+local_repository(
+    name = "rules_bzlmodrio_jdk",
+    path = "..",
+)
+
+{{bazel_dependencies.rules_jvm_external.download_repository(indent_num=0, maybe=False)}}
+
+load("@rules_jvm_external//:repositories.bzl", "rules_jvm_external_deps")
+
+rules_jvm_external_deps()
+
+load("@rules_jvm_external//:setup.bzl", "rules_jvm_external_setup")
+
+rules_jvm_external_setup()
+
+{{bazel_dependencies.rules_java.download_repository(indent_num=0, maybe=False)}}
+
+{{ mandatory_dependencies.rules_bzlmodrio_toolchain.download_repository(0) }}
+
+load("@rules_jvm_external//:defs.bzl", "maven_install")
+
+maven_install(
+    name = "maven",
+    artifacts = [
+        "org.junit.jupiter:junit-jupiter-api:5.8.2",
+        "org.junit.jupiter:junit-jupiter-params:5.8.2",
+        "org.junit.jupiter:junit-jupiter-engine:5.8.2",
+        "org.junit.platform:junit-platform-commons:1.6.1",
+        "org.junit.platform:junit-platform-console:1.6.1",
+        "org.junit.platform:junit-platform-engine:1.6.1",
+        "org.junit.platform:junit-platform-launcher:1.6.1",
+        "org.junit.platform:junit-platform-suite-api:1.6.1",
+    ],
+    repositories = ["https://repo1.maven.org/maven2"],
+)
+
+
+load("@rules_bzlmodrio_jdk//:maven_deps.bzl", "setup_legacy_setup_jdk_dependencies")
+
+setup_legacy_setup_jdk_dependencies()
+
+#####################
+# Styleguide
+#####################
+{{ mandatory_dependencies.rules_pmd.maybe_local_repository() }}
+{{ mandatory_dependencies.rules_checkstyle.maybe_local_repository() }}
+{{ mandatory_dependencies.rules_spotless.maybe_local_repository() }}
+{{ mandatory_dependencies.rules_wpiformat.maybe_local_repository() }}
+{{ mandatory_dependencies.rules_wpi_styleguide.download_repository(0, native=False) }}
+
+load("@rules_wpi_styleguide//dependencies:load_rule_dependencies.bzl", "load_styleguide_rule_dependencies")
+
+load_styleguide_rule_dependencies()
+
+load("@rules_wpi_styleguide//dependencies:load_dependencies.bzl", "load_styleguide_dependencies")
+
+load_styleguide_dependencies()
+
+load("@rules_wpi_styleguide//dependencies:load_transitive_dependencies.bzl", "load_styleguide_transitive_dependencies")
+
+load_styleguide_transitive_dependencies()
+
+load("@rules_wpi_styleguide//dependencies:setup_styleguide.bzl", "setup_styleguide")
+
+setup_styleguide()
+
+load("@rules_wpi_styleguide//dependencies:load_pins.bzl", "load_styleguide_pins")
+
+load_styleguide_pins()
+#####################

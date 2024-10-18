@@ -1,0 +1,26 @@
+module(
+    name = "{{group.repo_name}}",
+    version = "{{group.sanitized_version}}{{group.patch}}",
+    compatibility_level = {{group.year}},
+)
+
+{{bazel_dependencies.platforms.module_dep()}}
+{{bazel_dependencies.rules_java.module_dep()}}
+
+deps = use_extension("//:maven_deps.bzl", "deps")
+
+{{ mandatory_dependencies.rules_bzlmodrio_toolchain.module_dep() }}
+
+REMOTE_JDK_REPOS = [
+{%- for platform in group.platforms %}
+    "roboriojdk_{{platform.repo_os}}{% if platform.repo_cpu == "aarch64" %}_arm64{%endif%}",
+{%- endfor %}
+]
+
+[use_repo(
+    deps,
+    repo,
+    repo + "_toolchain_config_repo",
+) for repo in REMOTE_JDK_REPOS]
+
+[register_toolchains("@" + name + "_toolchain_config_repo//:all") for name in REMOTE_JDK_REPOS]

@@ -1,0 +1,16 @@
+workspace(name = "rules_bzlmodrio_jdk")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+{{bazel_dependencies.rules_java.download_repository(indent_num=0, maybe=False)}}
+
+
+load("@rules_java//java:repositories.bzl", "rules_java_dependencies", "rules_java_toolchains")
+
+rules_java_dependencies()
+
+rules_java_toolchains()
+
+load("@rules_bzlmodrio_jdk//:maven_deps.bzl", "setup_legacy_setup_jdk_dependencies")
+
+setup_legacy_setup_jdk_dependencies()

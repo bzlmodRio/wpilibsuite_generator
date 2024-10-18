@@ -1,0 +1,34 @@
+load("@rules_java//toolchains:remote_java_repository.bzl", "remote_java_repository")
+
+
+def __setup_jdk_dependencies(mctx):
+    {%- for platform in group.platforms %}
+    remote_java_repository(
+        name = "roboriojdk_{{platform.repo_os}}{% if platform.repo_cpu == "aarch64" %}_arm64{%endif%}",
+        prefix = "roboriojdk",
+        version = "{{group.jre_version}}",
+        target_compatible_with = [
+            "@platforms//os:{{platform.platforms_os}}",
+            {% if platform.platforms_cpu %}"@platforms//cpu:{{platform.platforms_cpu}}" {% else %}# Assume JDK works for any CPU{% endif %},
+        ],
+        sha256 = "{{platform.get_sha256()}}",
+        urls = ["{{platform.get_url()}}"],
+        strip_prefix = "{{platform.strip_prefix}}",
+    )
+    {% endfor %}
+
+def setup_legacy_setup_jdk_dependencies():
+    __setup_jdk_dependencies(None)
+
+    REMOTE_JDK_REPOS = [
+    {%- for platform in group.platforms %}
+        "roboriojdk_{{platform.repo_os}}{% if platform.repo_cpu == "aarch64" %}_arm64{%endif%}",
+    {%- endfor %}
+    ]
+    [native.register_toolchains("@" + name + "_toolchain_config_repo//:all") for name in REMOTE_JDK_REPOS]
+
+
+deps = module_extension(
+    __setup_jdk_dependencies,
+)
+
