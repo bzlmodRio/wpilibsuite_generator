@@ -14,7 +14,7 @@ from bazelrio_gentool.generate_module_project_files import (
 
 def main():
     SCRIPT_DIR = os.environ["BUILD_WORKSPACE_DIRECTORY"]
-    REPO_DIR = os.path.join(SCRIPT_DIR, "..")
+    REPO_DIR = os.path.join(SCRIPT_DIR, "..", "..", "..", "..", "rules", "rules_bzlmodrio_toolchains")
 
     parser = argparse.ArgumentParser()
     add_generic_cli(parser)

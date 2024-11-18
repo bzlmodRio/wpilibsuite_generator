@@ -19,7 +19,7 @@ class ToolchainDef(NamedTuple):
 
 
 def get_toolchain_dependencies():
-    overall_year = "2024"
+    overall_year = "2025"
     overall_version = "1"
 
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/arm64-bullseye-2023-x86_64-apple-darwin-Toolchain-10.2.0.tgz
