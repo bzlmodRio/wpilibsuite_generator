@@ -28,6 +28,26 @@ def get_toolchain_dependencies():
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academi-2023-aarch64-apple-darwin-Toolchain-12.1.0.tgz
     toolchains = [
         ToolchainDef(
+            name="armhf-bookworm",
+            short_name="bookworm-32",
+            bin_subfolder="bookworm/bin",
+            bin_prefix="armv7-bookworm-linux-gnueabihf-",
+            sysroot_subfolder="bookworm/arm-linux-gnueabihf/sysroot",
+            cxx_version="10",
+            sysroot_include_folder="arm-linux-gnueabihf",
+            toolchain_version="12.2.0",
+        ),
+        ToolchainDef(
+            name="arm64-bookworm",
+            short_name="bookworm-64",
+            bin_subfolder="bookworm/bin",
+            bin_prefix="aarch64-bookworm-linux-gnu-",
+            sysroot_subfolder="bookworm/aarch64-linux-gnu/sysroot",
+            cxx_version="10",
+            sysroot_include_folder="aarch64-linux-gnu",
+            toolchain_version="12.2.0",
+        ),
+        ToolchainDef(
             name="armhf-bullseye",
             short_name="bullseye-32",
             bin_subfolder="bullseye/bin",
