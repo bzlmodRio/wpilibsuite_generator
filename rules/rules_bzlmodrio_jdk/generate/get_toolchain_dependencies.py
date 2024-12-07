@@ -107,4 +107,6 @@ def get_toolchain_dependencies():
         jre_version=17,
     )
 
+    output.organization = "wpilibsuite"
+
     return output
