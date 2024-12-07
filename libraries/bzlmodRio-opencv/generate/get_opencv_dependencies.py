@@ -41,7 +41,6 @@ def _default_all_platforms():
         "linuxathenastatic",
         "linuxathenadebug",
         "linuxathenastaticdebug",
-        
         "linuxsystemcore",
         "linuxsystemcorestatic",
         "linuxsystemcoredebug",
@@ -61,7 +60,8 @@ def get_opencv_dependencies():
         version,
         year,
         "https://frcmaven.wpi.edu/release",
-        patch=patch, organization="wpilibsuite",
+        patch=patch,
+        organization="wpilibsuite",
     )
     group.create_cc_dependency(
         f"opencv-cpp",

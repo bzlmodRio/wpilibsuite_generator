@@ -14,7 +14,9 @@ from bazelrio_gentool.generate_module_project_files import (
 
 def main():
     SCRIPT_DIR = os.environ["BUILD_WORKSPACE_DIRECTORY"]
-    REPO_DIR = os.path.join(SCRIPT_DIR, "..", "..", "..", "..", "rules", "rules_bzlmodrio_toolchains")
+    REPO_DIR = os.path.join(
+        SCRIPT_DIR, "..", "..", "..", "..", "rules", "rules_bzlmodrio_toolchains"
+    )
 
     parser = argparse.ArgumentParser()
     add_generic_cli(parser)
@@ -26,9 +28,19 @@ def main():
     clean_existing_version(
         REPO_DIR,
         extra_dir_blacklist=["jni"],
-        file_blacklist=["tests/defines_helper.bzl", "constraints/combined/BUILD.bazel", "conditions/BUILD.bazel"],
+        file_blacklist=[
+            "tests/defines_helper.bzl",
+            "constraints/combined/BUILD.bazel",
+            "conditions/BUILD.bazel",
+        ],
     )
-    generate_toolchain(REPO_DIR, container, mandatory_dependencies)
+    generate_toolchain(
+        REPO_DIR,
+        container,
+        mandatory_dependencies,
+        include_bookworm32_compiler=True,
+        include_bookworm64_compiler=True,
+    )
 
     template_files = [
         ".bazelrc-java",

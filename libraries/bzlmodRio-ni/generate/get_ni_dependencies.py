@@ -13,7 +13,12 @@ def get_ni_dependencies():
     group_id = f"edu.wpi.first.ni-libraries"
 
     group = DependencyContainer(
-        "bzlmodrio-ni", version, year, "https://frcmaven.wpi.edu/release", patch=patch, organization="wpilibsuite",
+        "bzlmodrio-ni",
+        version,
+        year,
+        "https://frcmaven.wpi.edu/release",
+        patch=patch,
+        organization="wpilibsuite",
     )
     group.create_cc_dependency(
         f"chipobject",

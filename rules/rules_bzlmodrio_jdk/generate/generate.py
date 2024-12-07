@@ -21,7 +21,9 @@ import os
 
 def main():
     SCRIPT_DIR = os.environ["BUILD_WORKSPACE_DIRECTORY"]
-    REPO_DIR = os.path.join(SCRIPT_DIR, "..", "..", "..", "..", "rules", "rules_bzlmodrio_jdk")
+    REPO_DIR = os.path.join(
+        SCRIPT_DIR, "..", "..", "..", "..", "rules", "rules_bzlmodrio_jdk"
+    )
 
     parser = argparse.ArgumentParser()
     add_generic_cli(parser)

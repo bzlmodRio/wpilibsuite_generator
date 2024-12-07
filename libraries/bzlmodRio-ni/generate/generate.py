@@ -14,7 +14,9 @@ import subprocess
 
 def main():
     SCRIPT_DIR = os.environ["BUILD_WORKSPACE_DIRECTORY"]
-    REPO_DIR = os.path.join(SCRIPT_DIR, "..", "..", "..", "..", "libraries", "bzlmodRio-ni")
+    REPO_DIR = os.path.join(
+        SCRIPT_DIR, "..", "..", "..", "..", "libraries", "bzlmodRio-ni"
+    )
     output_dir = os.path.join(REPO_DIR, "libraries")
 
     parser = argparse.ArgumentParser()
@@ -31,7 +33,14 @@ def main():
     )
     generate_meta_deps(output_dir, group, force_tests=args.force_tests)
 
-    buildifier_args = ["/home/pjreiniger/go/bin/buildifier", "--lint=fix", "-warnings", "all", "-r", REPO_DIR]
+    buildifier_args = [
+        "/home/pjreiniger/go/bin/buildifier",
+        "--lint=fix",
+        "-warnings",
+        "all",
+        "-r",
+        REPO_DIR,
+    ]
     subprocess.check_call(buildifier_args)
 
 
