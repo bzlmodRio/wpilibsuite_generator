@@ -38,7 +38,7 @@ def main():
         REPO_DIR,
         container,
         mandatory_dependencies,
-        include_bookworm32_compiler=True,
+        include_bookworm32_compiler=False,
         include_bookworm64_compiler=True,
     )
 
