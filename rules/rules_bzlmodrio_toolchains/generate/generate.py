@@ -26,7 +26,7 @@ def main():
     clean_existing_version(
         REPO_DIR,
         extra_dir_blacklist=["jni"],
-        file_blacklist=["tests/defines_helper.bzl", "constraints/combined/BUILD.bazel"],
+        file_blacklist=["tests/defines_helper.bzl", "constraints/combined/BUILD.bazel", "conditions/BUILD.bazel"],
     )
     generate_toolchain(REPO_DIR, container, mandatory_dependencies)
 

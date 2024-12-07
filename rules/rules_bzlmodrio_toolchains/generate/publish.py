@@ -7,7 +7,7 @@ from bazelrio_gentool.utils import TEMPLATE_BASE_DIR
 def main():
     SCRIPT_DIR = os.environ["BUILD_WORKSPACE_DIRECTORY"]
     registry_location = os.path.join(
-        SCRIPT_DIR, "..", "..", "..", "bazel-central-registry"
+        SCRIPT_DIR, "..", "..", "..", "..", "bazel-central-registry"
     )
 
     group = get_toolchain_dependencies()

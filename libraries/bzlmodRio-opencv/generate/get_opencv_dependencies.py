@@ -41,13 +41,18 @@ def _default_all_platforms():
         "linuxathenastatic",
         "linuxathenadebug",
         "linuxathenastaticdebug",
+        
+        "linuxsystemcore",
+        "linuxsystemcorestatic",
+        "linuxsystemcoredebug",
+        "linuxsystemcorestaticdebug",
     ] + _default_all_native_platforms()
 
 
 def get_opencv_dependencies():
-    year = "2024"
-    version = "4.8.0-7"
-    patch = ".bcr1"
+    year = "2025"
+    version = "4.10.0-2"
+    patch = ""
 
     group_id = f"edu.wpi.first.thirdparty.frc{year}.opencv"
 

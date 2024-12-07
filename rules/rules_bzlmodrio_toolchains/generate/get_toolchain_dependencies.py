@@ -33,7 +33,7 @@ def get_toolchain_dependencies():
             bin_subfolder="bookworm/bin",
             bin_prefix="armv7-bookworm-linux-gnueabihf-",
             sysroot_subfolder="bookworm/arm-linux-gnueabihf/sysroot",
-            cxx_version="10",
+            cxx_version="12",
             sysroot_include_folder="arm-linux-gnueabihf",
             toolchain_version="12.2.0",
         ),
@@ -43,7 +43,7 @@ def get_toolchain_dependencies():
             bin_subfolder="bookworm/bin",
             bin_prefix="aarch64-bookworm-linux-gnu-",
             sysroot_subfolder="bookworm/aarch64-linux-gnu/sysroot",
-            cxx_version="10",
+            cxx_version="12",
             sysroot_include_folder="aarch64-linux-gnu",
             toolchain_version="12.2.0",
         ),
@@ -115,5 +115,6 @@ def get_toolchain_dependencies():
         container.configs.append(config)
 
     container.configs = sorted(container.configs, key=lambda x: x.short_name)
+    container.organization = "wpilibsuite"
 
     return container

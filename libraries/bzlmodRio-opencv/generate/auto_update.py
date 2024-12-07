@@ -19,6 +19,7 @@ def main():
     contents = re.sub(
         '( +)version = f?"(.*)"', f'\\1version = "{new_version}"', contents
     )
+    contents = re.sub('( +)patch = "(.*)"', f'\\1patch = ""', contents)
 
     with open(file_to_replace, "w") as f:
         f.write(contents)
