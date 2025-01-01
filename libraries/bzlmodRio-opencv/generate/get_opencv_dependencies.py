@@ -8,6 +8,7 @@ def _default_native_shared_platforms():
         "linuxx86-64",
         "osxarm64",
         "osxuniversal",
+        "osxx86-64",
         "windowsx86-64",
         "windowsx86",
         "windowsarm64",
@@ -50,7 +51,7 @@ def _default_all_platforms():
 
 def get_opencv_dependencies():
     year = "2025"
-    version = "4.10.0-2"
+    version = "4.10.0-3"
     patch = ""
 
     group_id = f"edu.wpi.first.thirdparty.frc{year}.opencv"

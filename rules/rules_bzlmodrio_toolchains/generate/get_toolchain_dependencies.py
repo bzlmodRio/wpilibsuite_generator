@@ -21,6 +21,7 @@ class ToolchainDef(NamedTuple):
 def get_toolchain_dependencies():
     overall_year = "2025"
     overall_version = "1"
+    patch = ".bcr1"
 
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/arm64-bullseye-2023-x86_64-apple-darwin-Toolchain-10.2.0.tgz
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-aarch64-bullseye-linux-gnu-Toolchain-12.1.0.tgz
@@ -69,13 +70,23 @@ def get_toolchain_dependencies():
         ),
         ToolchainDef(
             name="armhf-raspi-bullseye",
-            short_name="raspi-32",
+            short_name="raspi-bullseye-32",
             bin_subfolder="raspi-bullseye/bin",
             bin_prefix="armv6-bullseye-linux-gnueabihf-",
             sysroot_subfolder="raspi-bullseye/arm-linux-gnueabihf/sysroot",
             cxx_version="10",
             sysroot_include_folder="arm-linux-gnueabihf",
             toolchain_version="10.2.0",
+        ),
+        ToolchainDef(
+            name="armhf-raspi-bookworm",
+            short_name="raspi-bookworm-32",
+            bin_subfolder="raspi-bookworm/bin",
+            bin_prefix="armv6-bookworm-linux-gnueabihf-",
+            sysroot_subfolder="raspi-bookworm/arm-linux-gnueabihf/sysroot",
+            cxx_version="12",
+            sysroot_include_folder="arm-linux-gnueabihf",
+            toolchain_version="12.2.0",
         ),
         ToolchainDef(
             name="cortexa9_vfpv3-roborio-academic",
@@ -102,7 +113,7 @@ def get_toolchain_dependencies():
             repo_name="rules_bullseye_toolchain",
             version=f"{overall_year}-{overall_version}",
             cpp_platform_configs=[
-                # CppPlatformConfig("macos", "apple-darwin", ".tgz", "arm64"),
+                CppPlatformConfig("macosarm", "apple-darwin", ".tgz", "arm64"),
                 CppPlatformConfig("macos", "apple-darwin", ".tgz", "x86_64"),
                 CppPlatformConfig("linux", "linux-gnu", ".tgz", "x86_64"),
                 CppPlatformConfig("windows", "w64-mingw32", ".zip", "x86_64"),
@@ -116,5 +127,6 @@ def get_toolchain_dependencies():
 
     container.configs = sorted(container.configs, key=lambda x: x.short_name)
     container.organization = "wpilibsuite"
+    container.patch = patch
 
     return container

@@ -38,8 +38,8 @@ def main():
         REPO_DIR,
         container,
         mandatory_dependencies,
-        include_bookworm32_compiler=True,
-        include_bookworm64_compiler=True,
+        include_linuxarm32_compiler=True,
+        include_linuxarm64_compiler=True,
     )
 
     template_files = [
