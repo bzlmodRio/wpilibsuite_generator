@@ -49,6 +49,16 @@ def get_toolchain_dependencies():
             toolchain_version="12.2.0",
         ),
         ToolchainDef(
+            name="arm64-bookworm",
+            short_name="systemcore",
+            bin_subfolder="bookworm/bin",
+            bin_prefix="aarch64-bookworm-linux-gnu-",
+            sysroot_subfolder="bookworm/aarch64-linux-gnu/sysroot",
+            cxx_version="12",
+            sysroot_include_folder="aarch64-linux-gnu",
+            toolchain_version="12.2.0",
+        ),
+        ToolchainDef(
             name="armhf-bullseye",
             short_name="bullseye-32",
             bin_subfolder="bullseye/bin",
@@ -110,7 +120,7 @@ def get_toolchain_dependencies():
         config = CppToolchainConfig(
             year=overall_year,
             release_version=f"{overall_year}_{overall_version}",
-            repo_name="rules_bullseye_toolchain",
+            repo_name="dummy",
             version=f"{overall_year}-{overall_version}",
             cpp_platform_configs=[
                 CppPlatformConfig("macosarm", "apple-darwin", ".tgz", "arm64"),
