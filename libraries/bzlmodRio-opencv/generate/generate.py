@@ -32,6 +32,7 @@ def main():
         REPO_DIR,
         group,
         mandatory_dependencies,
+        include_systemcore_compiler=True,
     )
     generate_group(output_dir, group, force_tests=args.force_tests)
 
