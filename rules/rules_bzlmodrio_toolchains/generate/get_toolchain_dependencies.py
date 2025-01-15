@@ -21,7 +21,7 @@ class ToolchainDef(NamedTuple):
 def get_toolchain_dependencies():
     overall_year = "2025"
     overall_version = "1"
-    patch = ".bcr1"
+    patch = ".bcr2"
 
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/arm64-bullseye-2023-x86_64-apple-darwin-Toolchain-10.2.0.tgz
     # https://github.com/wpilibsuite/opensdk/releases/download/v2023-7/cortexa9_vfpv3-roborio-academic-2023-aarch64-bullseye-linux-gnu-Toolchain-12.1.0.tgz
