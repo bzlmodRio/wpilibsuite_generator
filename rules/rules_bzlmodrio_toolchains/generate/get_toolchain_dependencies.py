@@ -16,6 +16,8 @@ class ToolchainDef(NamedTuple):
     cxx_version: str
     sysroot_include_folder: str
     toolchain_version: str
+    constraint_cpu: str
+    target_cpu: str
 
 
 def get_toolchain_dependencies():
@@ -37,6 +39,8 @@ def get_toolchain_dependencies():
             cxx_version="12",
             sysroot_include_folder="arm-linux-gnueabihf",
             toolchain_version="12.2.0",
+            constraint_cpu = "armv7",
+            target_cpu = "armv7",
         ),
         ToolchainDef(
             name="arm64-bookworm",
@@ -47,6 +51,8 @@ def get_toolchain_dependencies():
             cxx_version="12",
             sysroot_include_folder="aarch64-linux-gnu",
             toolchain_version="12.2.0",
+            constraint_cpu = "arm64",
+            target_cpu = "armv8a",
         ),
         ToolchainDef(
             name="arm64-bookworm",
@@ -57,6 +63,8 @@ def get_toolchain_dependencies():
             cxx_version="12",
             sysroot_include_folder="aarch64-linux-gnu",
             toolchain_version="12.2.0",
+            constraint_cpu = "arm64",
+            target_cpu = "armv8a",
         ),
         ToolchainDef(
             name="armhf-bullseye",
@@ -67,6 +75,8 @@ def get_toolchain_dependencies():
             cxx_version="10",
             sysroot_include_folder="arm-linux-gnueabihf",
             toolchain_version="10.2.0",
+            constraint_cpu = "armv7",
+            target_cpu = "armv7",
         ),
         ToolchainDef(
             name="arm64-bullseye",
@@ -77,6 +87,8 @@ def get_toolchain_dependencies():
             cxx_version="10",
             sysroot_include_folder="aarch64-linux-gnu",
             toolchain_version="10.2.0",
+            constraint_cpu = "arm64",
+            target_cpu = "armv8a",
         ),
         ToolchainDef(
             name="armhf-raspi-bullseye",
@@ -87,6 +99,8 @@ def get_toolchain_dependencies():
             cxx_version="10",
             sysroot_include_folder="arm-linux-gnueabihf",
             toolchain_version="10.2.0",
+            constraint_cpu = "armv7",
+            target_cpu = "armv7",
         ),
         ToolchainDef(
             name="armhf-raspi-bookworm",
@@ -97,6 +111,8 @@ def get_toolchain_dependencies():
             cxx_version="12",
             sysroot_include_folder="arm-linux-gnueabihf",
             toolchain_version="12.2.0",
+            constraint_cpu = "armv7",
+            target_cpu = "armv7",
         ),
         ToolchainDef(
             name="cortexa9_vfpv3-roborio-academic",
@@ -107,6 +123,8 @@ def get_toolchain_dependencies():
             cxx_version="12",
             sysroot_include_folder="arm-nilrt-linux-gnueabi",
             toolchain_version="12.1.0",
+            constraint_cpu = "armv7",
+            target_cpu = "armv7",
         ),
     ]
 

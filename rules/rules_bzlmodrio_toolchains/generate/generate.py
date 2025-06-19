@@ -1,5 +1,6 @@
 import os
 import argparse
+import subprocess
 from get_toolchain_dependencies import get_toolchain_dependencies
 
 from bazelrio_gentool.cli import add_generic_cli, GenericCliArgs
@@ -51,6 +52,16 @@ def main():
     )
 
     manual_fixes(REPO_DIR)
+
+    buildifier_args = [
+        "/home/pjreiniger/go/bin/buildifier",
+        "--lint=fix",
+        "-warnings",
+        "all",
+        "-r",
+        REPO_DIR,
+    ]
+    subprocess.check_call(buildifier_args)
 
 
 def manual_fixes(repo_dir):
