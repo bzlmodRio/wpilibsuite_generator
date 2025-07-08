@@ -17,11 +17,14 @@ def _default_native_static_platforms():
 def get_libssh_dependencies():
     year = "2024"
     version = "0.105-1"
+    patch = ".bcr1"
 
     group_id = f"edu.wpi.first.thirdparty.frc{year}"
 
     group = DependencyContainer(
-        "bzlmodrio-libssh", version, year, "https://frcmaven.wpi.edu/release"
+        "bzlmodrio-libssh", version, year, "https://frcmaven.wpi.edu/release",
+        organization="wpilibsuite",
+        patch = patch,
     )
     group.create_cc_dependency(
         f"libssh",

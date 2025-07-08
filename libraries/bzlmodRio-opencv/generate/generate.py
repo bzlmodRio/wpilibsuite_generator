@@ -33,6 +33,7 @@ def main():
         group,
         mandatory_dependencies,
         include_systemcore_compiler=True,
+        include_styleguide = False,
     )
     generate_group(output_dir, group, force_tests=args.force_tests)
 

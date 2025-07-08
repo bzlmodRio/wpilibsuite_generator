@@ -1,4 +1,5 @@
 import argparse
+import subprocess
 import os
 
 from bazelrio_gentool.clean_existing_version import clean_existing_version
@@ -13,7 +14,9 @@ from get_libssh_dependencies import get_libssh_dependencies
 
 def main():
     SCRIPT_DIR = os.environ["BUILD_WORKSPACE_DIRECTORY"]
-    REPO_DIR = os.path.join(SCRIPT_DIR, "..")
+    REPO_DIR = os.path.join(
+        SCRIPT_DIR, "..", "..", "..", "..", "libraries", "bzlmodRio-libssh"
+    )
     output_dir = os.path.join(REPO_DIR, "libraries")
 
     parser = argparse.ArgumentParser()
@@ -30,8 +33,19 @@ def main():
         group,
         mandatory_dependencies,
         test_macos=False,
+        include_styleguide = False,
     )
     generate_group(output_dir, group, force_tests=args.force_tests)
+
+    buildifier_args = [
+        "/home/pjreiniger/go/bin/buildifier",
+        "--lint=fix",
+        "-warnings",
+        "all",
+        "-r",
+        REPO_DIR,
+    ]
+    subprocess.check_call(buildifier_args)
 
 
 if __name__ == "__main__":
