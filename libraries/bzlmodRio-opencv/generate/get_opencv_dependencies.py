@@ -52,7 +52,7 @@ def _default_all_platforms():
 def get_opencv_dependencies():
     year = "2025"
     version = "4.10.0-3"
-    patch = ".bcr4"
+    patch = ".bcr5"
 
     group_id = f"edu.wpi.first.thirdparty.frc{year}.opencv"
 
