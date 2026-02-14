@@ -1,47 +1,44 @@
-load("@rules_python//python:defs.bzl", "py_binary", "py_library")
-
-py_library(
-    name = "get_libssh_dependencies",
-    srcs = ["get_libssh_dependencies.py"],
-    visibility = ["//visibility:public"],
-    deps = ["@bzlmodrio-gentool//bazelrio_gentool"],
-)
+load("@rules_python//python:defs.bzl", "py_binary")
 
 py_binary(
     name = "generate",
     srcs = ["generate.py"],
+    data = [
+        "@bzlmodrio-ni-gentool//:generate",
+        "@bzlmodrio-opencv-gentool//:generate",
+        # "@bzlmodrio-gentool//bazelrio_gentool",
+    ],
     visibility = ["//visibility:public"],
     deps = [
-        ":get_libssh_dependencies",
-        "@bzlmodrio-gentool//bazelrio_gentool",
+        "@rules_python//python/runfiles",
     ],
 )
 
-py_binary(
-    name = "publish",
-    srcs = ["publish.py"],
-    visibility = ["//visibility:public"],
-    deps = [
-        ":get_libssh_dependencies",
-        "@bzlmodrio-gentool//bazelrio_gentool",
-    ],
-)
+# py_binary(
+#     name = "publish",
+#     srcs = ["publish.py"],
+#     visibility = ["//visibility:public"],
+#     deps = [
+#         ":get_libssh_dependencies",
+#         "@bzlmodrio-gentool//bazelrio_gentool",
+#     ],
+# )
 
-py_binary(
-    name = "auto_update",
-    srcs = ["auto_update.py"],
-    deps = [
-        ":generate",
-        "@bzlmodrio-gentool//bazelrio_gentool",
-    ],
-)
+# py_binary(
+#     name = "auto_update",
+#     srcs = ["auto_update.py"],
+#     deps = [
+#         ":generate",
+#         "@bzlmodrio-gentool//bazelrio_gentool",
+#     ],
+# )
 
-py_binary(
-    name = "get_version",
-    srcs = ["get_version.py"],
-    visibility = ["//visibility:public"],
-    deps = [
-        ":get_libssh_dependencies",
-        "@bzlmodrio-gentool//bazelrio_gentool",
-    ],
-)
+# py_binary(
+#     name = "get_version",
+#     srcs = ["get_version.py"],
+#     visibility = ["//visibility:public"],
+#     deps = [
+#         ":get_libssh_dependencies",
+#         "@bzlmodrio-gentool//bazelrio_gentool",
+#     ],
+# )
