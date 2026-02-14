@@ -1,5 +1,5 @@
 module(
-    name = "rules_bzlmodrio_toolchains-gentool",
+    name = "rules_bzlmodrio_jdk-gentool",
 )
 
 bazel_dep(name = "rules_python", version = "1.7.0")

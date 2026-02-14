@@ -6,6 +6,8 @@ bazel_dep(name = "rules_python", version = "1.7.0")
 bazel_dep(name = "bzlmodrio-gentool", version = "")
 bazel_dep(name = "bzlmodrio-opencv-gentool", version = "")
 bazel_dep(name = "bzlmodrio-ni-gentool", version = "")
+bazel_dep(name = "rules_bzlmodrio_toolchains-gentool", version = "")
+bazel_dep(name = "rules_bzlmodrio_jdk-gentool", version = "")
 
 python = use_extension("@rules_python//python/extensions:python.bzl", "python")
 python.toolchain(
@@ -30,4 +32,14 @@ local_path_override(
 local_path_override(
     module_name = "bzlmodrio-ni-gentool",
     path = "../libraries/bzlmodRio-ni/generate",
+)
+
+local_path_override(
+    module_name = "rules_bzlmodrio_jdk-gentool",
+    path = "../rules/rules_bzlmodrio_jdk/generate",
+)
+
+local_path_override(
+    module_name = "rules_bzlmodrio_toolchains-gentool",
+    path = "../rules/rules_bzlmodrio_toolchains/generate",
 )

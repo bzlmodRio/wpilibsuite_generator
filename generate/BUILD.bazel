@@ -6,6 +6,8 @@ py_binary(
     data = [
         "@bzlmodrio-ni-gentool//:generate",
         "@bzlmodrio-opencv-gentool//:generate",
+        "@rules_bzlmodrio_toolchains-gentool//:generate",
+        "@rules_bzlmodrio_jdk-gentool//:generate",
         # "@bzlmodrio-gentool//bazelrio_gentool",
     ],
     visibility = ["//visibility:public"],
