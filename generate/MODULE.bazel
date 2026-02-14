@@ -1,0 +1,10 @@
+module(
+    name = "bzlmodrio-libssh-gentool",
+)
+
+bazel_dep(name = "rules_python", version = "1.7.0")
+bazel_dep(name = "bzlmodrio-gentool", version = "")
+local_path_override(
+    module_name = "bzlmodrio-gentool",
+    path = "../../../gentool",
+)
